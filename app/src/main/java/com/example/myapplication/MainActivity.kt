@@ -123,7 +123,32 @@ fun PortfolioApp() {
                 projects.forEach { ProjectCard(it) }
             }
             Spacer(Modifier.height(24.dp))
+            Footer()
         }
+    }
+}
+
+@Composable
+fun Footer() {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.primary)
+            .padding(vertical = 20.dp, horizontal = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Text(
+            text = "© 2026 Yasmeen Esam Harara",
+            color = MaterialTheme.colorScheme.onPrimary,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold
+        )
+        Text(
+            text = "Built with Jetpack Compose",
+            color = MaterialTheme.colorScheme.onPrimary,
+            fontSize = 11.sp
+        )
     }
 }
 
