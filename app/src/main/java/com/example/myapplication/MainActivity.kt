@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -154,25 +156,39 @@ fun Footer() {
 
 @Composable
 fun ProfileHeader() {
+    val gradient = Brush.verticalGradient(
+        colors = listOf(
+            MaterialTheme.colorScheme.primary,
+            MaterialTheme.colorScheme.primaryContainer
+        )
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary)
+            .background(gradient)
             .padding(horizontal = 24.dp, vertical = 36.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Box(
             modifier = Modifier
-                .size(96.dp)
+                .size(104.dp)
                 .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primaryContainer),
+                .background(MaterialTheme.colorScheme.onPrimary)
+                .padding(4.dp)
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.primary)
+                .border(
+                    width = 2.dp,
+                    color = MaterialTheme.colorScheme.onPrimary,
+                    shape = CircleShape
+                ),
             contentAlignment = Alignment.Center
         ) {
             Text(
                 text = "Y",
                 color = MaterialTheme.colorScheme.onPrimary,
-                fontSize = 42.sp,
+                fontSize = 44.sp,
                 fontWeight = FontWeight.Bold
             )
         }
@@ -180,7 +196,7 @@ fun ProfileHeader() {
         Text(
             text = "Yasmeen Esam Harara",
             color = MaterialTheme.colorScheme.onPrimary,
-            fontSize = 22.sp,
+            fontSize = 24.sp,
             fontWeight = FontWeight.Bold
         )
         Text(
@@ -192,7 +208,7 @@ fun ProfileHeader() {
         Spacer(Modifier.height(10.dp))
         Text(
             text = "Passionate about building clean, accessible Android apps with Jetpack Compose and Kotlin.",
-            color = MaterialTheme.colorScheme.onPrimary,
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
             fontSize = 13.sp,
             textAlign = TextAlign.Center
         )
